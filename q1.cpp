@@ -16,13 +16,11 @@ class GasPump {
 		void setCostPerGallon(double cpg) { costPerGallon = cpg; }
         
 		void dispense(int seconds) {
-
-
-			
+			amountDispensed=.1*seconds;
 			amountCharged = amountDispensed * costPerGallon;
 		}
 		void reset() {
-            
+            costPerGallon=0.0;
 			amountDispensed = 0.0;
 			amountCharged = 0.0;
 		}		
@@ -30,12 +28,21 @@ class GasPump {
 	
 int main() {
 	
-    //Define variables
+	GasPump Person;
+	double costpergallon;
+	int seconds;
 
-    // Define Class Object
+	Person.reset();
 
-    // Call Functions
+	cout << "What is the cost per gallon of gas?\n: ";
+	cin >> costpergallon; 
+    Person.setCostPerGallon(costpergallon);
 	
+	cout << "\nHow long do you want to pump gas for?\n:";
+	cin >> seconds;
+	Person.dispense(seconds);
 
+	cout << "\nAmount Dispensed: " << Person.getAmountDispensed() << "\nCost Per Gallon: " << Person.getCostPerGallon() << "\nAmount Charged: " << Person.getAmountCharged();
+	
 	return 0;
 }
